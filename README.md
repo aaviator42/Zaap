@@ -4,7 +4,7 @@ Zaap makes it super easy for you to write a PHP REST API.
 
 Here's what you do:
 
-Put a copy of the API templace file (`ZaapReceiver.php`) on your server. Make changes to it according to this README.
+Put a copy of the API template file (`ZaapReceiver.php`) on your server. Make changes to it according to this README.
 
 ------------
 
@@ -25,7 +25,8 @@ variable | what it's for
 
 
 ### Writing your API
-`ZaapReceiver.php` accepts four kinds of HTTP requests: `GET`, `POST`, `PUT` and `DELETE`. It accepts JSON-encoded payloads in the request's body.
+`ZaapReceiver.php` accepts four kinds of HTTP requests: `GET`, `POST`, `PUT` and `DELETE`. It accepts JSON-encoded payloads in the request's body.  
+You can rename the file if you wish, of course.
 
 Right off the bat, you can leave the first few lines of the script as is, and jump to the switch satatement. 
 
