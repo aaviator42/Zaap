@@ -20,7 +20,7 @@ variable | what it's for
 `$endpointArray`| Contains the endpoint in an array, with each value of the array corresponding to a segment of the endpoint. <br> In the example, that's `["getUser","byID"]`.
 `$params` | Contains the parameters and values from the query string in an array. The same as `$_GET`. <br> In the example, that's `{"id":"1234","file":"temp"}`.
 `$input` | An array that contains the JSON-decoded input received in the request body. Mostly useful for POST and PUT, although they can be used with GET and DELETE too.
-`$input` | An array that contains the data that is to be returned to whoever is making the request. 
+`$output` | An array that contains the data that is to be returned to whoever is making the request. 
 
 
 
