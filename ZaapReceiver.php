@@ -1,7 +1,7 @@
 <?php
 /*
-Zaap receiver
-v1.0
+Zaap Receiver
+v1.1
 by @aaviator42
 
 2021-09-13
@@ -107,7 +107,6 @@ function printOutput($code = 200){
 	header('Content-Type: application/json');
 	http_response_code($code);
 	echo json_encode($output);
-	exit(0);
 }
 
 //--your functions go below this line--
@@ -128,9 +127,6 @@ function getOne(){
 	//We return information through $output
 	$output["hash"] = $hash;
 	$output["filename"] = $input["filename"];
-	$output["endpoint"] = $endpoint;
-	$output["endpointArray"] = $endpointArray;
-	$output["line"] = $input["line"];
 	
 	//We can also send through a return code, like this:
 	$output["returnCode"] = 1;
@@ -138,6 +134,7 @@ function getOne(){
 	//Finally, we'll print the JSON-fied output.
 	//The function takes an HTTP status code as the argument.
 	printOutput(200);
+	exit(0);
 	
 }
 
