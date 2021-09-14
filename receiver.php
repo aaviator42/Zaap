@@ -4,7 +4,7 @@ Zaap receiver
 v1.0
 by @aaviator42
 
-2021-09-12
+2021-09-13
 
 
 */
@@ -14,15 +14,13 @@ by @aaviator42
 $endpoint = rtrim(substr(@$_SERVER['PATH_INFO'], 1), '/\\');
 $endpointArray = explode("/", $endpoint);
 
-
 $method = $_SERVER['REQUEST_METHOD'];
 
-if($method === "GET" || $method === "DELETE"){
-	$input = $_GET;
-} 
-
-if ($method === "PUT" || $method === "POST"){
+$params = $_GET;
+if (!empty(file_get_contents('php://input'))){
 	$input = json_decode(file_get_contents('php://input'), true);
+} else {
+	$input = array();
 }
 
 $output = array(
@@ -34,7 +32,7 @@ $output = array(
 switch($method){
 	
 	case 'PUT':
-		switch($endpoint){
+		switch($endpointArray[0]){
 			case 'putOne':
 				putOne();
 			break;
@@ -48,7 +46,7 @@ switch($method){
 	break;
 	
 	case 'GET':
-		switch($endpoint){
+		switch($endpointArray[0]){
 			case 'getOne':
 				getOne();
 			break;
@@ -62,7 +60,7 @@ switch($method){
 		break;
 	
 	case 'POST':
-		switch($endpoint){
+		switch($endpointArray[0]){
 			case 'postOne':
 				postOne();
 			break;
@@ -76,7 +74,7 @@ switch($method){
 		break;
 	
 	case 'DELETE':
-		switch($endpoint){
+		switch($endpointArray[0]){
 			case 'deleteOne':
 				deleteOne();
 			break;
@@ -96,15 +94,16 @@ switch($method){
 
 
 function errorInvalidRequest(){
-	global $input, $output;
+	global $output;
 	
-	http_response_code(400);
 	$output["error"] = 1;
 	$output["errorMessage"] = "API Remote: Invalid request." . PHP_EOL;
+	
+	printOutput(400);
 }
 
 function printOutput($code = 200){
-	global $input, $output;
+	global $output;
 	header('Content-Type: application/json');
 	http_response_code($code);
 	echo json_encode($output);
@@ -114,9 +113,10 @@ function printOutput($code = 200){
 //--your functions go below this line--
 
 function getOne(){
-	global $input, $output;
+	global $endpoint, $endpointArray;
+	global $params, $input, $output;
 	
-	//$input contains all the information received in the API request.
+	//$input contains all the information received in the API request body.
 	//For example:
 	$filename = $input["filename"];
 	$line = $input["line"];
@@ -125,10 +125,11 @@ function getOne(){
 	//For this example, let's just hash the filename, because why not.
 	$hash = md5($filename);
 	
-	
 	//We return information through $output
 	$output["hash"] = $hash;
 	$output["filename"] = $input["filename"];
+	$output["endpoint"] = $endpoint;
+	$output["endpointArray"] = $endpointArray;
 	$output["line"] = $input["line"];
 	
 	//We can also send through a return code, like this:
