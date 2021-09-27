@@ -1,10 +1,10 @@
 <?php
 /*
 Zaap Receiver
-v1.1
+v1.2
 by @aaviator42
 
-2021-09-13
+2021-09-27
 
 
 */
@@ -25,7 +25,8 @@ if (!empty(file_get_contents('php://input'))){
 
 $output = array(
 	"error" => 0,			//bool: 0 = all ok, 1 = error occured
-	"errorMessage" => "",	//if error occurs, store message here
+	"errorCode" => NULL,	//if error occurs, store error code here
+	"errorMessage" => NULL	//if error occurs, store message here
 	);
 
 
@@ -98,6 +99,7 @@ function errorInvalidRequest(){
 	
 	$output["error"] = 1;
 	$output["errorMessage"] = "API Remote: Invalid request." . PHP_EOL;
+	$output["errorCode"] = 3 . PHP_EOL;
 	
 	printOutput(400);
 }
