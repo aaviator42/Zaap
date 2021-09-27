@@ -1,6 +1,6 @@
 # Zaap
 Zaap makes it super easy for you to write a PHP REST API.  
-`v1.1`: `2021-09-13`
+`v1.2`: `2021-09-27`
 
 Here's what you do:
 
