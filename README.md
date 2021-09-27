@@ -22,6 +22,7 @@ variable | what it's for
 `$input` | An array that contains the JSON-decoded input received in the request body. Mostly useful for POST and PUT, although they can be used with GET and DELETE too.
 `$output` | An array that contains the data that is to be returned to whoever is making the request. 
 
+------------
 
 
 ### Writing your API
@@ -46,7 +47,21 @@ If you're not planning on supporting certain HTTP methods (such as PUT or DELETE
 7. You can now exit the script.
 8. Congrats, your REST API is now ready!
 
+-----------------
+
+### Output
+
+Here's a few of the recommended elements for `$output`. Obviously you have to add others too, to return relevant data.
+
+element | what it's for
+---------|--------------
+`$output["error"]`  | Bool. `0` by default. Change to `1` if an error occurs.
+`$output["errorCode"]`| Use this to return an error code if an error occurs. NULL by default.
+`$output["errorMessage"]`| Use this to return an error message  if an error occurs. NULL by default.
+`$output["returnCode"]`| Use this to return a code upon execution of the relevant code.
+
+
 
 --------
 
-Documentation updated: `2021-09-13`.
+Documentation updated: `2021-09-27`.
