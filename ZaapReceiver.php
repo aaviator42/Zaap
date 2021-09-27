@@ -99,7 +99,7 @@ function errorInvalidRequest(){
 	
 	$output["error"] = 1;
 	$output["errorMessage"] = "API Remote: Invalid request." . PHP_EOL;
-	$output["errorCode"] = 3 . PHP_EOL;
+	$output["errorCode"] = -1;
 	
 	printOutput(400);
 }
