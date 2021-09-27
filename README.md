@@ -55,7 +55,7 @@ Here's a few of the recommended elements for `$output`. Obviously you have to ad
 
 element | what it's for
 ---------|--------------
-`$output["error"]`  | Bool. `0` by default. Change to `1` if an error occurs.
+`$output["error"]`  | Bool. Indicates whether or not an error occured. `0` by default. Change to `1` if an error occurs.
 `$output["errorCode"]`| Use this to return an error code if an error occurs. NULL by default.
 `$output["errorMessage"]`| Use this to return an error message  if an error occurs. NULL by default.
 `$output["returnCode"]`| Use this to return a code upon execution of the relevant code.
