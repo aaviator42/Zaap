@@ -6,6 +6,7 @@ Here's what you do:
 
 Put a copy of the API template file (`ZaapReceiver.php`) on your server. Make changes to it according to this README.
 
+> Need to make requests to your fresh API from PHP? Check out [ZaapRemote](https://github.com/aaviator42/ZaapRemote).
 ------------
 
 ### Variables
