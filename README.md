@@ -32,18 +32,18 @@ You can rename the file if you wish, of course.
 
 Right off the bat, you can leave the first few lines of the script as is, and jump to the switch satatement. 
 
-There's a case for each request method, and within each there's a second switch statement for the first endpoint. Use this to map endpoints to functions. For example, the endpoint `getUser` can be mapped to `readUser()`, or whatever. 
+There's a case for each request method, and within each there's a second switch statement for the first endpoint segment. Use this to map endpoints to functions. For example, the endpoint `getUser` can be mapped to `readUser()`, or whatever. 
 
 If you're not planning on supporting certain HTTP methods (such as PUT or DELETE), simply delete them from the switch statement to simplify your code.
 
-`getOne()` is a simple example that demonstrates how you should write your functions.
+In the file, `getOne()` is a simple example that demonstrates how you should write your functions.
 
 1. Use the data in `$input`, `$params`, `$endpoint` and `$endpointData` to do whatever it is that the function needs to do.
 2. If you find that the request is invalid, then simply call `errorInvalidRequest()`, otherwise: 
 3. Store whatever data needs to be returned to the client in `$output`.
 4. If an error occurs, then change `$output["error"]` to `1` to inform the client that an error occured, and store an error message in `$output["errorMessage"]`.
 5. If no error occurs, then store a success return code in `$output["returnCode"]` to inform the client of the same.
-6. Call `printOutput()`, while passing an appropriate HTTP status code as an argument. If none is passed, then `200` (OK) is used by default.  
+6. Call `printOutput()`, to which you should pass an appropriate HTTP status code as an argument. If none is passed, then `200` (OK) is used by default.  
    This function will JSON-encode `$output` and print it for the client.
 7. You can now exit the script.
 8. Congrats, your REST API is now ready!
@@ -52,7 +52,7 @@ If you're not planning on supporting certain HTTP methods (such as PUT or DELETE
 
 ### Output
 
-Here's a few of the recommended elements for `$output`. Obviously you have to add others too, to return relevant data.
+Here are a few of the recommended elements for `$output`. Obviously you have to add others too, to return relevant data.
 
 element | what it's for
 ---------|--------------
@@ -65,4 +65,4 @@ element | what it's for
 
 --------
 
-Documentation updated: `2021-09-27`.
+Documentation updated: `2021-12-31`.
